@@ -8,12 +8,12 @@
         <field name="inherit_id" ref="product.product_template_form_view"/>
         <field name="arch" type="xml">
             <xpath expr="//label[@for='list_price']" position="before">
-                <field name="discount_percentage"/>
                 <label for="original_price"/>
                 <div name="pricing" class="o_row">
                   <field name="original_price" class="oe_inline" widget='monetary'
                     options="{'currency_field': 'currency_id', 'field_digits': True}"/>
                 </div>
+                <field name="discount_percentage" string="Discount %"/>
             </xpath>
         </field>
     </record>

@@ -1,0 +1,22 @@
+<odoo>
+  <data>
+
+    <!-- Added fields for Discount percentage, and original price    -->
+    <record id="product_template_inherit" model="ir.ui.view">
+        <field name="name">product.template.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//label[@for='list_price']" position="before">
+                <field name="discount_percentage"/>
+                <label for="original_price"/>
+                <div name="pricing" class="o_row">
+                  <field name="original_price" class="oe_inline" widget='monetary'
+                    options="{'currency_field': 'currency_id', 'field_digits': True}"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+  </data>
+</odoo>

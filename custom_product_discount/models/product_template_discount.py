@@ -15,7 +15,7 @@ class custom_product_discount(models.Model):
             self.env.cr.execute("UPDATE product_template SET original_price = list_price")
             config_param_model.set_param('discount_migration_done', True)
 
-    @api.depends('discount_percentage', 'list_price')
+    @api.depends('discount_percentage', 'original_price')
     def compute_list_price(self):
         """
             set list price with discounted price if discount percentage is set,
@@ -23,7 +23,7 @@ class custom_product_discount(models.Model):
         """
         for rec in self:
             if rec.discount_percentage:
-                rec.list_price = rec.list_price * (1 - (rec.discount_percentage / 100))
+                rec.list_price = rec.original_price * (1 - (rec.discount_percentage / 100))
             else:
                 rec.list_price = rec.original_price
 

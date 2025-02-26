@@ -13,7 +13,8 @@
                   <field name="original_price" class="oe_inline" widget='monetary'
                     options="{'currency_field': 'currency_id', 'field_digits': True}"/>
                 </div>
-                <field name="discount_percentage" string="Discount %"/>
+              <field name="discount_percentage" groups="base.group_system" string="Discount %" />
+              <field name="discount_percentage" readonly="1" string="Discount %" groups="!base.group_system"/>
             </xpath>
         </field>
     </record>
